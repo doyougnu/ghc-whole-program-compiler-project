@@ -5,6 +5,9 @@ packages:
   - 'external-stg'
 
 extra-deps:
-  - souffle-haskell-3.3.0
-  - zip-1.7.2
-  - shellwords-0.1.2.2
+  - souffle-haskell-2.1.0
+  - primitive-0.7.1.0
+  - zip-1.7.0
+
+nix:
+  enable: true
