@@ -8,6 +8,7 @@ let
   sources = import ./nix/sources.nix {};
 in
 { nixpkgs   ? import (sources.nixpkgs) {}
+, unstable  ? import (sources.nixpkgs-unstable) {}
 , bootghc   ? "ghc883"
 , version   ? "9.0"
 , hadrianCabal ? (builtins.getEnv "PWD") + "/hadrian/hadrian.cabal"
@@ -30,6 +31,8 @@ let
     llvmForGhc = if lib.versionAtLeast version "9.1"
                  then llvm_10
                  else llvm_9;
+
+    omp = llvmPackages.openmp;
 
     stdenv =
       if useClang
@@ -65,9 +68,10 @@ let
         zlib.out
         zlib.dev
         hlint
-        stack
         mod-pak
+        bzip2
       ]
+      ++ [omp]
       ++ docsPackages
       ++ optional withLlvm llvmForGhc
       ++ optional withGrind valgrind
@@ -96,7 +100,7 @@ let
       then noTest (hspkgs.callHackage "alex" "3.2.6" {})
       else noTest (hspkgs.callHackage "alex" "3.2.5" {});
 
-    depsTools = [ happy alex hspkgs.cabal-install ];
+    depsTools = [ happy alex hspkgs.cabal-install unstable.stack ];
 
     hadrianCabalExists = builtins.pathExists hadrianCabal;
     hsdrv = if (withHadrianDeps &&

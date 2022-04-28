@@ -1,3 +1,4 @@
 packages:
-  external-stg-compiler
   external-stg
+  external-stg-compiler
+  external-stg-interpreter

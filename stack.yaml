@@ -12,5 +12,11 @@ extra-deps:
 compiler:       ghc-9.0.2.1000
 compiler-check: match-exact
 system-ghc:     true
+
+nix:
+  enable: false
+
+# use local GHC (for development)
+system-ghc: true
 extra-path:
   - /home/doyougnu/programming/haskell/ghc-whole-program-compiler-project/ghc-wpc/_build/stage1/bin
