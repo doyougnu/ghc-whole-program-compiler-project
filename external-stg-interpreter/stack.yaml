@@ -11,3 +11,4 @@ extra-deps:
 
 nix:
   enable: true
+  packages: [ zlib, libffi, pkg-config, bzip2 ]

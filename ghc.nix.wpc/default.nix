@@ -70,6 +70,15 @@ let
         hlint
         mod-pak
         bzip2
+        libGL
+        libGLU
+        xorg.libX11
+        xorg.libXi
+        xorg.libXcursor
+        xorg.libXrandr
+        xorg.libXxf86vm
+        xorg.libXinerama
+        xorg.libpthreadstubs
       ]
       ++ [omp]
       ++ docsPackages
