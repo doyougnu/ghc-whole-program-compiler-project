@@ -9,8 +9,8 @@ let
 in
 { nixpkgs   ? import (sources.nixpkgs) {}
 , unstable  ? import (sources.nixpkgs-unstable) {}
-, bootghc   ? "ghc883"
-, version   ? "9.0"
+, bootghc   ? "ghc922"
+, version   ? "9.3"
 , hadrianCabal ? (builtins.getEnv "PWD") + "/hadrian/hadrian.cabal"
 , nixpkgs-unstable ? import (sources.nixpkgs-unstable) {}
 , useClang  ? false  # use Clang for C compilation
