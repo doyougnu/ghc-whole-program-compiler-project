@@ -56,8 +56,10 @@ let
     docsPackages = if withDocs then [ python3Packages.sphinx ourtexlive ] else [];
 
     mod-pak = noTest (haskell.packages.${bootghc}.callPackage
-      ../mod-pak/mod-pak.nix { zip = hspkgs.callHackage "zip" "1.7.0" {
-                                 conduit-zstd = hspkgs.callHackage "conduit-zstd" "0.0.2.0" {};}; });
+      ../mod-pak/mod-pak.nix { zip = hspkgs.callHackage "zip" "1.7.2" {
+                                 conduit-zstd = hspkgs.callHackage "conduit-zstd" "0.0.2.0" {};
+                               };
+                             });
 
     depsSystem = with lib; (
       [ autoconf automake m4 less
